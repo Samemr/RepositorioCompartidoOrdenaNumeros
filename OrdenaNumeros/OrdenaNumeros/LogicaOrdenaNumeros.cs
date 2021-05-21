@@ -324,5 +324,69 @@ namespace OrdenaNumeros
                 for (int j = 0; j < totalColumnas; j++)
                     matrizBotones[i, j].BackColor = Color.LightGray;
         }
+       
+        public int Factorial(int numero)
+        {
+            if (numero == 0)
+                return 1;
+
+            int result = 1;
+
+            for (int i = 1; i <= numero; i++)
+            {
+                result *= i;
+            }
+
+            return result;
+        }
+
+        public int Letras(string palabra)
+        {
+            int letras = 0;
+            char[] letrasGuardadas = palabra.ToCharArray();
+
+            foreach (char i in letrasGuardadas)
+            {
+                if (!char.IsNumber(i) && !char.IsPunctuation(i) && !char.IsWhiteSpace(i))
+                    letras++;
+            }
+
+            return letras;
+        }
+
+        public string CifraPalabra(string palabraCifrada)
+        {
+            string palabraTemporal = palabraCifrada.ToLower();
+            string resultado = "";
+            char[] letrasCambiar = palabraCifrada.ToCharArray();
+
+            foreach (char i in letrasCambiar)
+            {
+                string valorDeReemplazo = "0";
+                switch (i)
+                {
+                    case 'a':
+                    case 'b':
+                    case 'c':
+                        valorDeReemplazo = "1";
+                        break;
+                    case 'q':
+                    case 'r':
+                    case 's':
+                        valorDeReemplazo = "2";
+                        break;
+                    case 't':
+                    case 'u':
+                    case 'v':
+                        valorDeReemplazo = "3";
+                        break;
+                    default:
+                        valorDeReemplazo = i.ToString();
+                        break;
+                }
+                resultado += valorDeReemplazo;
+            }
+            return resultado;
+        }
     }
 }
